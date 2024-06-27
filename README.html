@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文本处理</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea, input {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function processText() {
+            // 获取用户输入的文本
+            let text = document.getElementById("inputText").value;
+
+            // 获取用户输入的需要增加的字符串
+            let appendStr = document.getElementById("appendStr").value;
+
+            // 按行处理文本，批量增加字符串
+            let lines = text.split("\n");
+            let processedLines = lines.map(line => line + appendStr);
+
+            // 将处理后的行重新组合成一个没有换行符的字符串
+            let resultText = processedLines.join("");
+
+            // 显示处理后的文本在文本区域中
+            document.getElementById("output").value = resultText;
+        }
+    </script>
+</head>
+<body>
+    <h1>文本处理</h1>
+    <div class="container">
+        <textarea id="inputText" rows="10" cols="50" placeholder="请输入文本"></textarea>
+        <input type="text" id="appendStr" placeholder="需要增加的字符串">
+        <button onclick="processText()">处理文本</button>
+        <textarea id="output" rows="10" cols="50" readonly placeholder="处理后的文本将显示在这里"></textarea>
+    </div>
+</body>
+</html>
