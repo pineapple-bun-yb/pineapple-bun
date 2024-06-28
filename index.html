@@ -9,16 +9,16 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #f0f8ff;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         header {
             width: 100%;
-            background-color: #333;
+            background-color: #0073e6;
             color: #fff;
-            padding: 1rem 0;
+            padding: 1rem;
             text-align: center;
             position: fixed;
             top: 0;
@@ -33,7 +33,7 @@
             display: flex;
             justify-content: center;
             padding: 1rem 0;
-            background-color: #555;
+            background-color: #005bb5;
         }
         nav a {
             color: #fff;
@@ -42,7 +42,41 @@
             margin: 0 0.5rem;
         }
         nav a:hover {
-            background-color: #444;
+            background-color: #004494;
+        }
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: #005bb5;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #004494;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
         }
         .grid {
             display: grid;
@@ -53,10 +87,13 @@
             background-color: #fff;
             padding: 1rem;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #0073e6;
+            animation: fadeIn 1s ease-in-out;
         }
         .blog-post:hover {
             transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
         .blog-post h2 {
             color: #333;
@@ -66,12 +103,16 @@
             line-height: 1.6;
         }
         footer {
-            background-color: #333;
+            background-color: #0073e6;
             color: #fff;
             text-align: center;
             padding: 1rem 0;
             width: 100%;
             margin-top: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -80,32 +121,51 @@
         <h1>My Blog</h1>
     </header>
     <nav>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </nav>
-    <div class="container">
-        <div class="grid">
-            <div class="blog-post">
-                <h2>Blog Post Title 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
-            </div>
-            <div class="blog-post">
-                <h2>Blog Post Title 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
-            </div>
-            <div class="blog-post">
-                <h2>Blog Post Title 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
-            </div>
-            <div class="blog-post">
-                <h2>Blog Post Title 4</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+    <div id="main">
+        <div class="container">
+            <div class="grid">
+                <div class="blog-post">
+                    <h2>Blog Post Title 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
+                </div>
+                <div class="blog-post">
+                    <h2>Blog Post Title 2</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
+                </div>
+                <div class="blog-post">
+                    <h2>Blog Post Title 3</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
+                </div>
+                <div class="blog-post">
+                    <h2>Blog Post Title 4</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar.</p>
+                </div>
             </div>
         </div>
     </div>
     <footer>
         <p>My Blog &copy; 2024</p>
     </footer>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
 </body>
 </html>
