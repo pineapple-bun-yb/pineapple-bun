@@ -1,82 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>文本处理</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-        h1 {
-            color: #4CAF50;
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
         }
         .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        nav {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: #555;
+        }
+        nav a {
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        nav a:hover {
+            background: #444;
+        }
+        .blog-post {
             background: #fff;
-            padding: 20px;
-            border-radius: 10px;
+            margin: 2rem 0;
+            padding: 1rem;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        textarea, input {
-            width: 100%;
-            max-width: 500px;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
+        .blog-post h2 {
+            color: #333;
         }
-        input[type="text"] {
-            max-width: 300px;
+        .blog-post p {
+            line-height: 1.6;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #45a049;
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
         }
     </style>
-    <script>
-        function processText() {
-            // 获取用户输入的文本
-            let text = document.getElementById("inputText").value;
-
-            // 获取用户输入的需要增加的字符串
-            let appendStr = document.getElementById("appendStr").value;
-
-            // 按行处理文本，批量增加字符串
-            let lines = text.split("\n");
-            let processedLines = lines.map(line => line + appendStr);
-
-            // 将处理后的行重新组合成一个没有换行符的字符串
-            let resultText = processedLines.join("");
-
-            // 显示处理后的文本在文本区域中
-            document.getElementById("output").value = resultText;
-        }
-    </script>
 </head>
 <body>
-    <h1>文本处理</h1>
+    <header>
+        <h1>My Blog</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
     <div class="container">
-        <textarea id="inputText" rows="10" cols="50" placeholder="请输入文本"></textarea>
-        <input type="text" id="appendStr" placeholder="需要增加的字符串">
-        <button onclick="processText()">处理文本</button>
-        <textarea id="output" rows="10" cols="50" readonly placeholder="处理后的文本将显示在这里"></textarea>
+        <div class="blog-post">
+            <h2>Blog Post Title</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar. Morbi id velit leo. Ut non lacinia velit. Cras sed nunc lacus. Phasellus a felis in lorem vehicula sollicitudin.</p>
+        </div>
+        <div class="blog-post">
+            <h2>Another Blog Post</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at dignissim odio. Maecenas ultrices felis ut lacus venenatis, in sollicitudin velit pulvinar. Morbi id velit leo. Ut non lacinia velit. Cras sed nunc lacus. Phasellus a felis in lorem vehicula sollicitudin.</p>
+        </div>
     </div>
+    <footer>
+        <p>My Blog &copy; 2024</p>
+    </footer>
 </body>
 </html>
