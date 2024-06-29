@@ -76,6 +76,17 @@
         document.addEventListener('selectstart', function(e){
   e.preventDefault();
 });
+        document.addEventListener('keydown', function(e){
+  if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
+    e.preventDefault();
+  }
+});
+
+        document.addEventListener('keydown', function(e){
+  if (e.ctrlKey && e.keyCode === 83) { // Ctrl + S
+    e.preventDefault();
+  }
+});
 
     </script>
     
