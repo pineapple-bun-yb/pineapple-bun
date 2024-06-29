@@ -69,10 +69,11 @@
             // 显示处理后的文本在文本区域中
             document.getElementById("output").value = resultText;
         }
+        //禁止网页右键保存
         document.addEventListener('contextmenu', function(e){
   e.preventDefault();
 });
-
+        //禁止网页f12等快捷键
         document.addEventListener('selectstart', function(e){
   e.preventDefault();
 });
@@ -81,7 +82,7 @@
     e.preventDefault();
   }
 });
-
+        //禁止网页保存
         document.addEventListener('keydown', function(e){
   if (e.ctrlKey && e.keyCode === 83) { // Ctrl + S
     e.preventDefault();
