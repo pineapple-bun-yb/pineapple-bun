@@ -69,6 +69,8 @@
             // 显示处理后的文本在文本区域中
             document.getElementById("output").value = resultText;
         }
+
+        /*
         //禁止网页右键保存
         document.addEventListener('contextmenu', function(e){
   e.preventDefault();
@@ -86,7 +88,22 @@
         document.addEventListener('keydown', function(e){
   if (e.ctrlKey && e.keyCode === 83) { // Ctrl + S
     e.preventDefault();
+      
   }
+});
+
+  */      
+
+        document.addEventListener('keydown', function(e){
+  // 阻止 F12 和 Ctrl + Shift + I 打开开发者工具
+  if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
+    e.preventDefault();
+  }
+  // 阻止 Ctrl + S 保存网页
+  if (e.ctrlKey && e.keyCode === 83) {
+    e.preventDefault();
+  }
+  // 确保其他快捷键不受影响
 });
 
     </script>
