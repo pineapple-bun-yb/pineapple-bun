@@ -69,6 +69,14 @@
             // 显示处理后的文本在文本区域中
             document.getElementById("output").value = resultText;
         }
+        document.addEventListener('contextmenu', function(e){
+  e.preventDefault();
+});
+
+        document.addEventListener('selectstart', function(e){
+  e.preventDefault();
+});
+
     </script>
     
 </head>
