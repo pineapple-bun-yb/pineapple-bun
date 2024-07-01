@@ -111,7 +111,76 @@
   e.preventDefault();
 });
 
+
         
+
+        // 获取Canvas元素和2D绘图上下文
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// 设置Canvas的宽度和高度
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// 存储粒子的数组
+let particles = [];
+
+// 定义粒子对象
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 10 + 2;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = `hsl(${Math.random() * 360}, 50%, 50%)`;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.1;
+    }
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+// 鼠标点击事件监听器
+addEventListener('click', (event) => {
+    let posX = event.clientX;
+    let posY = event.clientY;
+
+    for (let i = 0; i < 30; i++) {
+        particles.push(new Particle(posX, posY));
+    }
+});
+
+// 动画循环
+function animate() {
+    // 清除画布
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 更新和绘制每个粒子
+    particles.forEach((particle, index) => {
+        particle.update();
+        particle.draw();
+
+        // 移除透明度小于0的粒子
+        if (particle.size <= 0.2) {
+            particles.splice(index, 1);
+        }
+    });
+
+    // 循环调用动画函数
+    requestAnimationFrame(animate);
+}
+
+// 启动动画
+animate();
+
     </script>
     
 </head>
