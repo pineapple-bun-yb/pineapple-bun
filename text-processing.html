@@ -14,6 +14,7 @@
             margin: 0;
             padding: 20px;
             position: relative;
+            overflow: hidden;
         }
         h1 {
             color: #4CAF50;
@@ -62,6 +63,16 @@
             pointer-events: none;
         }
     </style>
+</head>
+<body>
+    <h1>Text processing</h1>
+    <div class="container">
+        <textarea id="inputText" rows="10" cols="50" placeholder="请输入文本"></textarea>
+        <input type="text" id="appendStr" placeholder="需要增加的字符串">
+        <button onclick="processText()">处理文本</button>
+        <textarea id="output" rows="10" cols="50" readonly placeholder="处理后的文本将显示在这里"></textarea>
+    </div>
+    <canvas id="particleCanvas"></canvas>
     <script>
         function processText() {
             // 获取用户输入的文本
@@ -98,8 +109,7 @@
         });
 
         // 粒子效果代码
-        const canvas = document.createElement('canvas');
-        document.body.appendChild(canvas);
+        const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -141,7 +151,7 @@
             }
         }
 
-        canvas.addEventListener('click', (event) => {
+        window.addEventListener('click', (event) => {
             const x = event.clientX;
             const y = event.clientY;
             for (let i = 0; i < 10; i++) {
@@ -157,14 +167,5 @@
 
         animate();
     </script>
-</head>
-<body>
-    <h1>Text processing</h1>
-    <div class="container">
-        <textarea id="inputText" rows="10" cols="50" placeholder="请输入文本"></textarea>
-        <input type="text" id="appendStr" placeholder="需要增加的字符串">
-        <button onclick="processText()">处理文本</button>
-        <textarea id="output" rows="10" cols="50" readonly placeholder="处理后的文本将显示在这里"></textarea>
-    </div>
 </body>
 </html>
