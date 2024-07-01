@@ -151,6 +151,11 @@
             }
         }
 
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
         window.addEventListener('click', (event) => {
             const x = event.clientX;
             const y = event.clientY;
