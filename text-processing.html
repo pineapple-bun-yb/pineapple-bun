@@ -111,33 +111,7 @@
   e.preventDefault();
 });
 
-        //特效
-        function createParticle(event) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    document.body.appendChild(particle);
-
-    // 设置粒子的位置
-    particle.style.left = event.pageX + 'px';
-    particle.style.top = event.pageY + 'px';
-
-    // 随机大小和颜色
-    const size = Math.random() * 10 + 5 + 'px';
-    particle.style.width = size;
-    particle.style.height = size;
-    particle.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
-
-    // 随机动画
-    particle.style.animation = `move ${Math.random() * 2 + 1}s linear`;
-    particle.style.animationFillMode = 'forwards';
-
-    // 移除粒子
-    particle.addEventListener('animationend', function() {
-      particle.remove();
-    });
-  }
-
-  document.addEventListener('click', createParticle);
+        
     </script>
     
 </head>
