@@ -92,6 +92,31 @@
             document.getElementById("output").value = resultText;
         }
 
+               // 检查重复项
+            let items = resultText.split(',');
+            let itemCounts = {};
+            items.forEach(function(item) {
+                item = item.trim();
+                if (itemCounts[item]) {
+                    itemCounts[item]++;
+                } else {
+                    itemCounts[item] = 1;
+                }
+            });
+
+            // 找出重复的项
+            let duplicates = [];
+            for (let item in itemCounts) {
+                if (itemCounts[item] > 1) {
+                    duplicates.push(item);
+                }
+            }
+
+            // 显示重复项
+            let duplicatesText = duplicates.length > 0 ? '重复项: ' + duplicates.join(', ') : '没有重复项';
+            document.getElementById("duplicates").value = duplicatesText;
+        }
+
         document.addEventListener('keydown', function(e){
             // 阻止 F12 和 Ctrl + Shift + I 打开开发者工具
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
