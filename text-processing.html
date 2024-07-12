@@ -65,6 +65,12 @@
             z-index: 0;
             pointer-events: none;
         }
+        #result {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 10px;
@@ -84,6 +90,7 @@
         <button onclick="processText()">处理文本</button>
         <textarea id="output" rows="10" readonly placeholder="处理后的文本将显示在这里"></textarea>
     </div>
+    <div id="result"></div>
     <canvas id="particleCanvas"></canvas>
     <script>
         function processText() {
@@ -107,10 +114,11 @@
             document.getElementById("output").value = resultText;
 
             // 显示重复字段或无重复字段
+            let resultDiv = document.getElementById("result");
             if (duplicates.length > 0) {
-                alert("重复字段: " + duplicates.join(", "));
+                resultDiv.innerHTML = "<p style='color: red;'>重复字段: " + duplicates.join(", ") + "</p>";
             } else {
-                alert("无重复字段");
+                resultDiv.innerHTML = "<p style='color: green;'>无重复字段</p>";
             }
         }
 
